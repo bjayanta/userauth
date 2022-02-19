@@ -7,6 +7,15 @@
     <title>Website</title>
 </head>
 <body>
+    {% comment %} message {% endcomment %}
+    {% if messages %}
+        {% for message in messages %}
+            <div>
+                {% if message.tags %}<h4>{{ message.tags }}</h4>{% endif %}
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
     
     {% comment %} content {% endcomment %}
     {% block content %}{% endblock content %}
