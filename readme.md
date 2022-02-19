@@ -30,7 +30,7 @@ Serve the server.
 or, 
 > python manage.py runserver \<ip-address>:\<port-number>
 
-Do not forgot to update "ALLOWED_HOSTS" from project settings,
+Do not forgot to update "ALLOWED_HOSTS" from project settings.
 
 ### Step 6:
 Make migrations & migrate to database 
