@@ -4,11 +4,27 @@
 <div>
     <h2>User Registration</h2>
 
+    <div>
+        {{ form.errors }}
+        {% comment %} {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    {{ error|escape }}
+                {% endfor %}
+            {% endfor %}
+
+            {% for error in form.non_field_errors %}
+                {{ error|escape }}
+            {% endfor %}
+        {% endif %} {% endcomment %}
+    </div>
+
     <form action="" method="post">
         {% csrf_token %}
 
         <div>
             {{ form.username }}
+            <small>{{ form.errors.username }}</small>
         </div>
 
         <div>
@@ -21,6 +37,7 @@
 
         <div>
             {{ form.password2 }}
+            <small>{{ form.errors.password2 }}</small>
         </div>
         
         <div>
