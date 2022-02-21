@@ -16,7 +16,7 @@ def registration(request):
             newUser = authenticate(username=username, password=password)
             if newUser is not None:
                 login(request, newUser)
-                HttpResponseRedirect('website.index')
+                return redirect('website.index')
     else:
         form = SignUpForm()
 
@@ -25,3 +25,18 @@ def registration(request):
     }
 
     return render(request, 'users/registration.html', context)
+
+def login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+
+            # redirect to dashboard view
+            return redirect('website.dashboard')
+        else:
+            messages.error(request, "Bad Credentials!")
+            return redirect('website.index')
