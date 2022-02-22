@@ -26,7 +26,9 @@ def registration(request):
 
     return render(request, 'users/registration.html', context)
 
-def login(request):
+def signin(request):
+    context = {}
+
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -39,4 +41,8 @@ def login(request):
             return redirect('website.dashboard')
         else:
             messages.error(request, "Bad Credentials!")
-            return redirect('website.index')
+    
+    return render(request, 'users/login.html', context)
+
+def signout(request):
+    return redirect('website.index')

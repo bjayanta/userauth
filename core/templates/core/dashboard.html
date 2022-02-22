@@ -2,7 +2,14 @@
 
 {% block content %}
 <div>
-    <h2>Welcome to dashboard.</h2>
-    <p>Hi there!</p>
+    {% if user.is_authenticated %}
+    <h2>Hello {{ fname }}</h2>
+    <a href="{% url 'users.signout' %}">Sign out</a>
+    {% else %}
+    <a href="{% url 'users.signin' %}">Sign in</a>
+    <a href="{% url 'users.registration' %}">Registration</a>
+    {% endif %}
+
+    <h4>Welcome to dashboard.</h4>
 </div>
 {% endblock content %}

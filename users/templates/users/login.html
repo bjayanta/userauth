@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div>
+    <h2>User Login</h2>
+
+    <div>
+        {{ form.errors }}
+        {% comment %} {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    {{ error|escape }}
+                {% endfor %}
+            {% endfor %}
+
+            {% for error in form.non_field_errors %}
+                {{ error|escape }}
+            {% endfor %}
+        {% endif %} {% endcomment %}
+    </div>
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <div>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Enter your username" required>
+            <small>{{ form.errors.username }}</small>
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+            <small>{{ form.errors.password }}</small>
+        </div>
+        
+        <div>
+            <button type="submit">Login</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
