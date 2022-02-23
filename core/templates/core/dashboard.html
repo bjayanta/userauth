@@ -2,6 +2,18 @@
 
 {% block content %}
 <div>
+    <ul>
+        <li>{{ user.username }}</li>
+        <li>{{ user.id }}</li>
+        <li>{{ user.first_name }}</li>
+        <li>{{ user.last_name }}</li>
+        <li>{{ user.email }}</li>
+        <li>{{ user.is_superuser }}</li>
+        <li>Is Stuff: {% user.is_stuff ? "565614" %}</li>
+        <li>{{ user.is_active }}</li>
+        <li>{{ user.last_login }}</li>
+    </ul>
+
     {% if user.is_authenticated %}
     <h2>Hello {{ fname }}</h2>
     <a href="{% url 'users.signout' %}">Sign out</a>
