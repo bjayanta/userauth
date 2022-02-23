@@ -23,20 +23,24 @@
         {% csrf_token %}
 
         <div>
+            <label for="">Username</label>
             {{ form.username }}
             <small>{{ form.errors.username }}</small>
         </div>
 
         <div>
+            <label for="">Email address</label>
             {{ form.email }}
         </div>
 
         <div>
+            <label for="">Password</label>
             {{ form.password1 }}
             <small>{{ form.errors.password2 }}</small>
         </div>
 
         <div>
+            <label for="">Confirm Password</label>
             {{ form.password2 }}
         </div>
         

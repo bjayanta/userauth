@@ -7,6 +7,9 @@
     <title>Website</title>
 </head>
 <body>
+    {% comment %} menu {% endcomment %}
+    {% include 'core/menu.html' %}
+
     {% comment %} message {% endcomment %}
     {% if messages %}
         {% for message in messages %}

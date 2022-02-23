@@ -1,6 +1,7 @@
+from email import message
 from django.shortcuts import redirect, render, HttpResponseRedirect
 from .forms import SignUpForm, UserCreationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 # Create your views here.
@@ -16,7 +17,7 @@ def registration(request):
             newUser = authenticate(username=username, password=password)
             if newUser is not None:
                 login(request, newUser)
-                return redirect('website.index')
+                return redirect('website.dashboard')
     else:
         form = SignUpForm()
 
@@ -45,4 +46,8 @@ def signin(request):
     return render(request, 'users/login.html', context)
 
 def signout(request):
-    return redirect('website.index')
+    if request.method == "POST":
+        logout(request)
+        messages.success(request, "Logged out successfully!")
+
+        return redirect('website.index')

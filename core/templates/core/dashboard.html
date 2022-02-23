@@ -2,26 +2,20 @@
 
 {% block content %}
 <div>
-    <ul>
-        <li>{{ user.username }}</li>
-        <li>{{ user.id }}</li>
-        <li>{{ user.first_name }}</li>
-        <li>{{ user.last_name }}</li>
-        <li>{{ user.email }}</li>
-        <li>{{ user.is_superuser }}</li>
-        <li>Is Stuff: {% user.is_stuff ? "565614" %}</li>
-        <li>{{ user.is_active }}</li>
-        <li>{{ user.last_login }}</li>
-    </ul>
-
-    {% if user.is_authenticated %}
     <h2>Hello {{ fname }}</h2>
-    <a href="{% url 'users.signout' %}">Sign out</a>
-    {% else %}
-    <a href="{% url 'users.signin' %}">Sign in</a>
-    <a href="{% url 'users.registration' %}">Registration</a>
-    {% endif %}
-
     <h4>Welcome to dashboard.</h4>
+
+    <h4>User details: </h4>
+    <ul>
+        <li>ID: {{ user.id }}</li>
+        <li>First name: {{ user.first_name }}</li>
+        <li>Last name: {{ user.last_name }}</li>
+        <li>Username: {{ user.username }}</li>
+        <li>Email address: {{ user.email }}</li>
+        <li>Is Superuser: {{ user.is_superuser }}</li>
+        <li>Is Stuff: {{ user.is_stuff|yesno:"Yes,No" }}</li>
+        <li>Is Active: {{ user.is_active }}</li>
+        <li>Last Login: {{ user.last_login }}</li>
+    </ul>
 </div>
 {% endblock content %}
